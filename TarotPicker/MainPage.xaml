@@ -12,28 +12,38 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-            
+
         </Grid.RowDefinitions>
         <Grid VerticalOptions="EndAndExpand">
             <Label x:Name="displayLabel"
                Text="{Binding Source={x:Reference numberOfCards},
                               Path=Value,
-                              StringFormat='Card Pull Amount: {0:F0}'}"/>
+                              StringFormat='Card Pull Amount: {0:F0}'}" FontSize="Medium"/>
         </Grid>
         <StackLayout>
-            <Label x:Name="inquiry" Text="How many cards would you like to pull?" FontSize="25" FontFamily="High Tower Text" Margin="0,0,0,5" />
+            <Label x:Name="inquiry" Text="How many cards would you like to pull?" FontSize="25" Margin="0,0,0,5" />
             <Slider x:Name="numberOfCards" Minimum="1" Maximum="10" Value="1" Margin="0,0,0,20" />
-           
+
         </StackLayout>
-        <Button Text="Pull Cards" FontSize="20" FontFamily="High Tower Text" Clicked="Button_Click" Grid.Row="1" />
-        
+        <Button Text="Pull Cards" FontSize="20"  Clicked="Button_Click" Grid.Row="1" 
+                WidthRequest="250" VerticalOptions="CenterAndExpand" Padding="20" Margin="15"/>
+
+
         <CollectionView x:Name="cardCollectionView" SelectionMode="None" Grid.Row="2">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Label Text="{Binding}" FontSize="20" FontFamily="High Tower Text"/>
+                    <Grid Padding="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Image Source = "{Binding ImagePath}"  HeightRequest="100" WidthRequest="100" Grid.Row="0" />
+                        <Label Text="{Binding Name}" FontSize="20" Grid.Row="1" />
+                        <Label Text="{Binding Description}" FontSize="14" Grid.Row="2" />
+                    </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
     </Grid>
-
 </ContentPage>

@@ -1,12 +1,13 @@
 ﻿using Microsoft.Maui.Controls;
 using System;
 using System.Collections.ObjectModel;
+using TarotPicker.Models;
 
 namespace TarotPicker
 {
     public partial class MainPage : ContentPage
     {
-        private readonly ObservableCollection<string> cardList = new();
+        private readonly ObservableCollection<Card> cardList = new();
 
         public MainPage()
         {
@@ -16,9 +17,10 @@ namespace TarotPicker
 
         private void Button_Click(object sender, EventArgs e)
         {
-            string[] pickedCards = CardPicker.PickSomeCards((int)numberOfCards.Value);
+            int numberOfCardsToPull = (int)numberOfCards.Value;
+            Card[] pickedCards = CardPicker.PickSomeCards(numberOfCardsToPull);
             cardList.Clear();
-            foreach (string card in pickedCards)
+            foreach (Card card in pickedCards)
             {
                 cardList.Add(card);
             }
