@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:TarotPicker"
+             mc:Ignorable="d"
+             x:Class="TarotPicker.MainPage">
+
+    <Grid Padding="20" Margin="50">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            
+        </Grid.RowDefinitions>
+        <Grid VerticalOptions="EndAndExpand">
+            <Label x:Name="displayLabel"
+               Text="{Binding Source={x:Reference numberOfCards},
+                              Path=Value,
+                              StringFormat='Card Pull Amount: {0:F0}'}"/>
+        </Grid>
+        <StackLayout>
+            <Label x:Name="inquiry" Text="How many cards would you like to pull?" FontSize="25" FontFamily="High Tower Text" Margin="0,0,0,5" />
+            <Slider x:Name="numberOfCards" Minimum="1" Maximum="10" Value="1" Margin="0,0,0,20" />
+           
+        </StackLayout>
+        <Button Text="Pull Cards" FontSize="20" FontFamily="High Tower Text" Clicked="Button_Click" Grid.Row="1" />
+        
+        <CollectionView x:Name="cardCollectionView" SelectionMode="None" Grid.Row="2">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding}" FontSize="20" FontFamily="High Tower Text"/>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
+</ContentPage>
