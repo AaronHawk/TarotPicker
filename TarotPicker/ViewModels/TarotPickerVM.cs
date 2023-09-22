@@ -33,9 +33,9 @@ public class TarotPickerVM : INotifyPropertyChanged
             return _tarotService.PickSomeCards(numberOfCards);
         }
 
-        internal static Card[] PickSomeCards(Slider numberOfCards)
-        {
-            throw new NotImplementedException();
-        }
+        //internal static Card[] PickSomeCards(Slider numberOfCards)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }
